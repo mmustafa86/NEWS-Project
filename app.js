@@ -49,28 +49,7 @@ app.use(authLocal);
 //        console.log(error)
 //    })
   
-app.get('/',function(req,res){
 
-
-newsapi.v2.topHeadlines({
-    q: 'trump',
-    category: 'politics',
-    language: 'en',
-    country: 'us'
-  }).then(response => {
-    //   var data=JSON.stringify(response);
-   res.json(response)
-    /*
-      {
-        status: "ok",
-        articles: [...]
-      }
-    */
-  }).catch(function(error){
-      console.log(error)
-  })
-
-})
 
 
 
