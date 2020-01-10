@@ -24,6 +24,8 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "morgan": "^1.9.1",
+    "newsapi": "^2.4.0",
+    "nodemon": "^2.0.2",
     "passport": "^0.4.1",
     "pbkdf2": "^3.0.17",
     "pg": "^7.17.0",
