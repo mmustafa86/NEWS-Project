@@ -73,7 +73,7 @@
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
+            <button id="click" value="General" class="btn btn-primary">Find Out More!</button>
           </div>
         </div>
       </div>
@@ -82,11 +82,11 @@
         <div class="card h-100">
           <img class="card-img-top" src="https://pbs.twimg.com/profile_images/603973993012428800/Z1_Vrldp_400x400.png" style="width: 500; height: 325;"alt="">
           <div class="card-body">
-            <h4 class="card-title">Businesse</h4>
+            <h4 class="card-title">Business</h4>
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
+            <button  id="click" value="Business" class="btn btn-primary">Find Out More!</button>
           </div>
         </div>
       </div>
@@ -98,7 +98,7 @@
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
+              <button  id="click" value="Entertainment" class="btn btn-primary">Find Out More!</button>
             </div>
           </div>
         </div>
@@ -111,7 +111,7 @@
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
+            <button id="click" value="Health" class="btn btn-primary">Find Out More!</button>
           </div>
         </div>
       </div>
@@ -124,7 +124,7 @@
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
+            <button id="category" value="Science" class="btn btn-primary">Find Out More!</button>
           </div>
         </div>
       </div>
@@ -136,7 +136,7 @@
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
+              <button id="category" value="Sports" class="btn btn-primary">Find Out More!</button>
             </div>
           </div>
         </div>
@@ -148,7 +148,7 @@
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
               </div>
               <div class="card-footer">
-                <a href="#" class="btn btn-primary">Find Out More!</a>
+                <button id="category" value="Technology" class="btn btn-primary" >Find Out More!</button>
               </div>
             </div>
           </div>
@@ -160,7 +160,7 @@
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
                 </div>
                 <div class="card-footer">
-                  <a href="#" class="btn btn-primary">Find Out More!</a>
+                  <a href="" class="btn btn-primary">Find Out More!</a>
                 </div>
               </div>
             </div>
@@ -183,5 +183,22 @@
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
 
 </body>
+<script>
+  
+  $("button").click(function (e){
+    e.preventDefault();
+    var value = $(this).val()   //using the value of the button to change the api search 
+    console.log(value)
+    $.ajax({
+      url: "/news/"+value,
+      method:"GET"
+    }).done(function(response){
+      console.log(response);
+      
+    })
+  })
+
+
+  </script>
 
 </html>
