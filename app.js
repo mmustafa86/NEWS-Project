@@ -58,7 +58,7 @@ app.use(authLocal);
 
 
 models.sequelize.sync().then(function(){
-    app.listen(4000, function(){
+    app.listen(process.env.PORT, function(){
       console.log('server listening on port 4000');
   });
   })
