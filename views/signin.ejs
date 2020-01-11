@@ -33,10 +33,10 @@
                 </div>
                 <div class="card-body">
                   <h5 class="card-title text-center">Welcome back!</h5>
-                  <form class="form-signin">
+                  <form action="/signin" method="POST" class="form-signin">
                     <div class="form-label-group">
-                      <input type="text" id="inputUserame" class="form-control" placeholder="Username" required autofocus>
-                      <label for="inputUserame">Email</label>
+                      <input type="text" id="inputUserame" class="form-control" placeholder="Email" required autofocus>
+                      <label for="email" name="email"  type="email">Email</label>
                     </div>
       
                     
@@ -45,7 +45,7 @@
       
                     <div class="form-label-group">
                       <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                      <label for="inputPassword">Password</label>
+                      <label for="password" name="password" type="password">Password</label>
                     </div>
                     
                    
