@@ -12,6 +12,8 @@ var morgan = require('morgan');
 require('dotenv').config();
 app.set('view engine','ejs');
 app.use(morgan('dev'));
+app.use(express.static('public'))
+
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('7f830f70a9b541b9bb7957578e96b91c')
 app.use(bodyParser.json());

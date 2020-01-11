@@ -37,6 +37,17 @@ app.use(session({
     //   })
     res.render('main.ejs')
     })
+    router.get('/signin',function(req,res){
 
+        res.render('signin.ejs')
+
+    })
+
+    router.get('/signup',function(req,res){
+
+        res.render('signup.ejs')
+
+    })
+    
 
   module.exports = router;
