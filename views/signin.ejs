@@ -35,23 +35,22 @@
                   <h5 class="card-title text-center">Welcome back!</h5>
                   <form action="/signin" method="POST" class="form-signin">
                     <div class="form-label-group">
-                      <input type="text" id="inputUserame" class="form-control" placeholder="Email" required autofocus>
-                      <label for="email" name="email"  type="email">Email</label>
+                      <input for="username" name="username"  type="username"type="text" id="inputUserame" class="form-control" placeholder="User Name" required autofocus>
+                      <label >User Name </label>
                     </div>
       
-                    
                     
                     <hr>
       
                     <div class="form-label-group">
-                      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                      <label for="password" name="password" type="password">Password</label>
+                      <input for="password" name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                      <label >Password</label>
                     </div>
                     
                    
       
                     <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">SIGN IN</button>
-                    <a class="d-block text-center mt-2 small" href="#">Register</a>
+                    <a class="d-block text-center mt-2 small" href="/signup">Register</a>
                     <hr class="my-4">
                     
                   </form>

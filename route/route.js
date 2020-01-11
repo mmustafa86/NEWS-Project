@@ -48,6 +48,9 @@ app.use(session({
         res.render('signup.ejs')
 
     })
-    
+  
+    router.get('/error',function(req,res){
+        res.send('password incorrect ')
+      })
 
   module.exports = router;

@@ -31,7 +31,7 @@ app.use(session({
 
   const LocalStrategy = require('passport-local').Strategy
 
- // Register User
+ // Register User to the database 
 
 
  router.post("/signup", function (req, res) {
@@ -61,6 +61,72 @@ app.use(session({
     
     });
 
+//passport local strategy 
+
+passport.use(new LocalStrategy(
+    function(username,password,done){
+        models.accounts.findOne({
+            where:{
+                username: username
+            }
+        }).then(function(user){
+            if (!user){
+                return done(null, false)
+            }
+            if (user.password !=encryptionPassword(password)){
+                return done(null, false)
+            }
+            return done(null, user);
+        }).catch(function(error){
+console.log(error)
+return done(error)
+        })
+    }
+));
+passport.serializeUser(function (user, done) {
+    done(null, user.id);
+  });
+  passport.deserializeUser(function (id, done) {
+    models.accounts.findOne({ where: { id: id } }).then(function (user) {
+      done(null, user);
+    }); 
+  });
+
+
+
+  // Using LocalStrategy with passport
+router.post('/signin',
+passport.authenticate('local', { failureRedirect: '/error' }),
+function(req, res) {
+  res.redirect('/success?username='+req.user.firstname)
+
+})
+
+router.get('/success',function(req,res){
+    console.log(req.user)
+    if(req.isAuthenticated()){
+        
+        res.redirect('/profile')
+    }else{
+        res.redirect('/signup')
+    }
+});
+
+router.get('/profile',function(req,res){
+    if(req.isAuthenticated()){
+    console.log(req.user);
+    res.render("profile.ejs",{name :req.user ,name: req.user })
+    }else {
+      res.redirect('/signup')
+    }
+  
+  
+  });
+
+router.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
+  });
 
 
 

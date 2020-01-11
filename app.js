@@ -8,12 +8,15 @@ const bodyParser= require("body-parser");
 const passport =require('passport');
 const session = require('express-session');
 var cookieParser = require('cookie-parser');
+const path =require('path');
 var morgan = require('morgan');
 require('dotenv').config();
 app.set('view engine','ejs');
 app.use(morgan('dev'));
-app.use(express.static('public'))
 
+
+app.get(express.static(__dirname +'/public'));
+console.log(__dirname)
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('7f830f70a9b541b9bb7957578e96b91c')
 app.use(bodyParser.json());
