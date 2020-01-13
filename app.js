@@ -12,10 +12,11 @@ const path =require('path');
 var morgan = require('morgan');
 require('dotenv').config();
 app.set('view engine','ejs');
+// app.set("views", __dirname + "/views");
 app.use(morgan('dev'));
 
 
-app.get(express.static(__dirname +'/public'));
+// app.get(express.static(__dirname +'/public'));
 console.log(__dirname)
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('7f830f70a9b541b9bb7957578e96b91c')
@@ -37,23 +38,7 @@ var authLocal=require('./auth/auth-local')
 app.use(route);
 app.use(authLocal);
 
-// newsapi.v2.topHeadlines({
-//     category: 'technology',
-//   language: 'en',
-//   country: 'us'
 
-//   }).then(response => {
-//     console.log(response);
-//     /*
-//       {
-//         status: "ok",
-//         articles: [...]
-//       }
-//     */
-//     }).catch(function(error){
-//        console.log(error)
-//    })
-  
 
 
 

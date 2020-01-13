@@ -36,9 +36,9 @@ app.use(session({
        
         
         var result =response.articles
-        result.forEach(element => {
-            console.log(element.source.name);
-        });
+        // result.forEach(element => {
+        //     console.log(element.source.name);
+        // });
         //   console.log(response)
         //   res.json(result)
        res.render('news.ejs',{datas: result});
