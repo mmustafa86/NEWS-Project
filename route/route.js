@@ -28,14 +28,20 @@ app.use(session({
   router.get('/news/:id',function(req,res){
 
 
-    newsapi.v2.sources({
-        category: req.params.category,
+    newsapi.v2.topHeadlines({
+        category: req.params.id,
         language: 'en',
         country: 'us'
       }).then(response => {
-        console.log(response);
-        //   var data=JSON.stringify(response);
-       res.json(response)
+       
+        
+        var result =response.articles
+        result.forEach(element => {
+            console.log(element.source.name);
+        });
+        //   console.log(response)
+        //   res.json(result)
+       res.render('news.ejs',{datas: result});
         /*
           {
             status: "ok",
@@ -45,10 +51,12 @@ app.use(session({
       }).catch(function(error){
           console.log(error)
       })
-    
+     
     })
 
-
+// router.get('/news',function(req,res){
+// res.render('news.ejs')
+// })
 
     router.get('/signin',function(req,res){
 
