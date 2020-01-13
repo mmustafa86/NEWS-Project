@@ -25,38 +25,44 @@ app.use(session({
 
 
 
-  router.get('/news/:id',function(req,res){
+//   router.get('/news/:id',function(req,res){
 
 
-    newsapi.v2.topHeadlines({
+//     newsapi.v2.topHeadlines({
+//         category: req.params.id,
+//         language: 'en',
+//         country: 'us'
+//       }).then(response => {
+       
+        
+//         var result =response.articles
+//         // result.forEach(element => {
+//         //     console.log(element.source.name);
+//         // });
+//         //   console.log(response)
+//         //   res.json(result)
+//        res.render('news.ejs',{datas: result});
+     
+//       }).catch(function(error){
+//           console.log(error)
+//       })
+     
+//     })
+
+router.get('/news/:id',function(req,res){
+    newsapi.v2.sources({
         category: req.params.id,
         language: 'en',
         country: 'us'
       }).then(response => {
-       
-        
-        var result =response.articles
-        // result.forEach(element => {
-        //     console.log(element.source.name);
-        // });
-        //   console.log(response)
-        //   res.json(result)
-       res.render('news.ejs',{datas: result});
-        /*
-          {
-            status: "ok",
-            articles: [...]
-          }
-        */
-      }).catch(function(error){
-          console.log(error)
-      })
-     
-    })
+    
+        console.log(response);
+        // res.json(response)
+        res.render('sources.ejs',{results: response})
+      });
 
-// router.get('/news',function(req,res){
-// res.render('news.ejs')
-// })
+});
+
 
     router.get('/signin',function(req,res){
 

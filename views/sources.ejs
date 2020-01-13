@@ -1,0 +1,63 @@
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Heroic Features - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+  crossorigin="anonymous">
+  <link href="" rel="stylesheet">
+  
+</head>
+<%- include('header'); -%>
+<body>
+
+<div>
+
+    <h1>result</h1>
+</div>
+      
+        <div class="container">
+      <!-- Card -->
+      <div class="row ">
+      <!-- Card -->
+
+      <%results.sources.forEach(function(data){%>
+      <div class="card" style="width: 18rem;">
+            <div class="card-body">
+       
+            <h5 class="card-title"><%=data.name%></h5>
+           <!-- Text -->
+          <p class="card-text"><%=data.description%></p>
+          <!-- Link -->
+          <a href="<%=data.url%>" class="btn btn-primary">Go somewhere</a>
+            <button class="btn btn-info">Add</button>
+        </div>
+        </div>
+        <%})%>
+       
+    </div>
+      </div>
+      <!-- Card -->
+      
+
+
+
+
+
+
+    </body>
+<%- include('footer'); -%>
+</html>
