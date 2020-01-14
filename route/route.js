@@ -23,7 +23,16 @@ app.use(session({
       res.render('main.ejs')
   })
 
-
+router.post('/profile/news/:id',function(req,res){
+    models.favorites.create({
+        user_id: req.user.id,
+        name:req.body.name
+    }).then(function(user){
+        console.log(user)
+    })
+    // res.redirect('favorite')
+    res.send('done')
+})
 
 //   router.get('/news/:id',function(req,res){
 
@@ -48,6 +57,9 @@ app.use(session({
 //       })
      
 //     })
+
+
+
 
 router.get('/news/:id',function(req,res){
     newsapi.v2.sources({

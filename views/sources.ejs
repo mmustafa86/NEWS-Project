@@ -43,7 +43,7 @@
           <p class="card-text"><%=data.description%></p>
           <!-- Link -->
           <a href="<%=data.url%>" class="btn btn-primary">Go somewhere</a>
-            <button class="btn btn-info">Add</button>
+            <button value="<%=data.id%>"class="btn btn-info">Add</button>
         </div>
         </div>
         <%})%>
@@ -60,4 +60,18 @@
 
     </body>
 <%- include('footer'); -%>
+<script>
+    $('button').click(function(e){
+        e.preventDefault();
+    var value = $(this).val()   
+    console.log(value)
+    $,ajax({
+        url: '',
+        type:'POST',
+        data : value
+    }).done(function (response){
+    console.log(response);
+    })
+    })
+</script>
 </html>
