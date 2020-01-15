@@ -44,11 +44,16 @@ models.favorites.findAll().then(function(data){
         newsapi.v2.topHeadlines({
             sources: element.name,
             language: 'en',
-            country: 'us'
+            
           }).then(response => {
               console.log(response);
               res.json(response)
-         })
+            var result =response.articles
+            //   res.render('news.ejs',{datas: result});
+            // res.json(result)
+         }).catch(function(error){
+                 console.log(error)
+                 })
         
           })         
     })
