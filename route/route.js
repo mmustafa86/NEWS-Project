@@ -24,15 +24,44 @@ app.use(session({
   })
 
 
+  router.get('/favorites',function(req,res){
+models.favorites.findAll().then(function(data){
+    console.log(data)
+})
+      res.render('favorite.ejs')
+
+  })
+
+
+
+
+  router.get('/mynews',function(req,res){
+    models.favorites.findAll().then(function(data){
+        console.log(data)
+       data.forEach(element => {
+           console.log(element.name) 
+    
+        newsapi.v2.topHeadlines({
+            sources: element.name,
+            language: 'en',
+            country: 'us'
+          }).then(response => {
+              console.log(response);
+              res.json(response)
+         })
+        
+          })         
+    })
+  })
 
 //   router.get('/news/:id',function(req,res){
 
 
-//     newsapi.v2.topHeadlines({
-//         category: req.params.id,
-//         language: 'en',
-//         country: 'us'
-//       }).then(response => {
+    // newsapi.v2.topHeadlines({
+    //     category: req.params.id,
+    //     language: 'en',
+    //     country: 'us'
+    //   }).then(response => {
        
         
 //         var result =response.articles
