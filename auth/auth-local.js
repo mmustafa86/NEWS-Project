@@ -128,7 +128,6 @@ router.get('/profile',function(req,res){
   });
 
 
-
   router.get('/news/:sources',function(req,res){
     if(req.isAuthenticated()){
       console.log(req.user);
@@ -148,6 +147,27 @@ router.get('/profile',function(req,res){
     }
 
 });
+
+router.post('/add',function(req,res){
+  var userId=req.user.id
+  var dataId=req.body.nameId
+
+    console.log(userId)
+    console.log(dataId)
+  models.favorites.create({
+      user_id: userId,
+      name: dataId
+  }).then(function(user){
+      console.log(user)
+  })
+  // res.redirect('favorite')
+  
+})
+
+
+
+
+
 
 router.get('/logout', function(req, res) {
     req.logout();
