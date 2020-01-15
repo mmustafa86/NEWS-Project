@@ -6,6 +6,10 @@ var router = express.Router();
 const models= require('../models');
 const bodyParser =require('body-parser')
 
+
+const NewsAPI = require('newsapi');
+const newsapi = new NewsAPI('7f830f70a9b541b9bb7957578e96b91c')
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(session({
@@ -122,6 +126,28 @@ router.get('/profile',function(req,res){
   
   
   });
+
+
+
+  router.get('/news/:sources',function(req,res){
+    if(req.isAuthenticated()){
+      console.log(req.user);
+    
+    
+    newsapi.v2.sources({
+        category: req.params.id,
+        language: 'en',
+        country: 'us'
+      }).then(response => {
+      console.log(response);
+        // res.json(response)
+        res.render('sources.ejs',{results: response})
+      });
+    }else{
+      res.redirect('/');
+    }
+
+});
 
 router.get('/logout', function(req, res) {
     req.logout();
