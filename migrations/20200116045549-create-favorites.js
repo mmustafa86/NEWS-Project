@@ -20,6 +20,15 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      category: {
+        type: Sequelize.STRING
+      },
+      language: {
+        type: Sequelize.STRING
+      },
+      country: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

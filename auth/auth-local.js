@@ -139,7 +139,7 @@ router.get('/profile',function(req,res){
         country: 'us'
       }).then(response => {
       console.log(response);
-        // res.json(response)
+       
         res.render('sources.ejs',{results: response})
       });
     }else{
@@ -151,12 +151,15 @@ router.get('/profile',function(req,res){
 router.post('/add',function(req,res){
   var userId=req.user.id
   var dataId=req.body.nameId
+  var category=req.body.categoryId
+ 
 
     console.log(userId)
     console.log(dataId)
   models.favorites.create({
       user_id: userId,
-      name: dataId
+      name: dataId,
+      category: category
   }).then(function(user){
       console.log(user)
   })

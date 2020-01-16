@@ -23,11 +23,13 @@
 <body>
 
   <div class="container">
-      <div class="row">
+      <div class="row ">
     <%names.forEach(function(name){%>
     <div class="card" style="width: 18rem;">
+      
         <div class="card-body">
           <h5 class="card-title"><%=name.name%></h5>
+          <p><%=name.category%></p>
           <p class="card-text"></p>
           <a href="#" class="btn btn-info">Go somewhere</a>
           <a href="#" class="btn btn-primary">Delete</a>
@@ -41,6 +43,11 @@
 
 
 </body>
+<style>
+  .row {
+margin: 100px;
+  }
+</style>
 
 <%- include('footer'); -%>
 </html>

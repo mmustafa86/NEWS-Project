@@ -52,6 +52,9 @@ models.favorites.findAll().then(function(data){
     }
   })
 
+  
+
+
 //   router.get('/news/:id',function(req,res){
 
 
