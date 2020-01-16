@@ -52,35 +52,39 @@ models.favorites.findAll().then(function(data){
     }
   })
 
-  
 
 
-//   router.get('/news/:id',function(req,res){
 
+  router.get('/topHeadlines/:id',function(req,res){
 
-    // newsapi.v2.topHeadlines({
-    //     category: req.params.id,
-    //     language: 'en',
-    //     country: 'us'
-    //   }).then(response => {
-       
-        
-//         var result =response.articles
-//         // result.forEach(element => {
-//         //     console.log(element.source.name);
-//         // });
-//         //   console.log(response)
-//         //   res.json(result)
-//        res.render('news.ejs',{datas: result});
+    if(req.isAuthenticated())   {
+        models.favorites.findAll().then(function(result){
+            console.log(result)
+            result.forEach(element => {
+               console.log(element.name) 
+               newsapi.v2.topHeadlines({
+
+                sources :req.params.id,
+                language: 'en',
+                
+              }).then(response => {
+                var result =response.articles
+        res.render('news.ejs',{datas: result}); 
+              }).catch(function(error){
+                console.log(error)
     
+              })
+      }).catch(function(error){
+          console.log(error)
+      })
+      } )
      
-//       }).catch(function(error){
-//           console.log(error)
-//       })
-     
-//     })
+    }else {
+        res.redirect('/')
+    }
 
 
+  })
 
 
     router.get('/signin',function(req,res){
