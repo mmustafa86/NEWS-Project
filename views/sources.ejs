@@ -46,7 +46,6 @@
           <form action="/add" method="POST">
             <input type="hidden" class="btn btn-info" name="nameId" value="<%=data.id%>" />
             <button class="btn btn-info" type="submit">add</button>
-
         </form>
         </div>
         </div>
@@ -65,17 +64,17 @@
     </body>
 <%- include('footer'); -%>
 <script>
-    // $('button').click(function(e){
-    //     e.preventDefault();
-    // var value = $(this).val()   
-    // console.log(value)
-    // $.ajax({
-    //     url: '/add',
-    //     type:'POST',
-    //     data : value
-    // }).done(function (response){
-    // console.log(response);
-    // })
-    // })
+    $('button').click(function(e){
+        e.preventDefault();
+    var value = $(this).val()   
+    console.log(value)
+    $.ajax({
+        url: '/add',
+        type:'POST',
+        data : value
+    }).done(function (response){
+    console.log(response);
+    })
+    })
 </script>
 </html>

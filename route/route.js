@@ -36,27 +36,20 @@ models.favorites.findAll().then(function(data){
 
 
   router.get('/mynews',function(req,res){
-    models.favorites.findAll().then(function(data){
-        console.log(data)
-       data.forEach(element => {
+    if(req.isAuthenticated())   {
+    models.favorites.findAll().then(function(result){
+        console.log(result)
+        result.forEach(element => {
            console.log(element.name) 
-    
-        newsapi.v2.topHeadlines({
-            sources: element.name,
-            language: 'en',
-            
-          }).then(response => {
-              console.log(response);
-              res.json(response)
-            var result =response.articles
-            //   res.render('news.ejs',{datas: result});
-            // res.json(result)
-         }).catch(function(error){
-                 console.log(error)
-                 })
         
-          })         
+          })   
+          res.render('favorite.ejs',{names: result})      
+    }).catch(function(error){
+        console.log(error)
     })
+    } else {
+        res.redirect('/')
+    }
   })
 
 //   router.get('/news/:id',function(req,res){
