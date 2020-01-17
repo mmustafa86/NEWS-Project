@@ -85,13 +85,11 @@ models.favorites.findAll().then(function(data){
   })
 
 
-
-
-  router.delete("/post/:id", function (req, res, next) {
+  router.delete("/delete/:id", function (req, res, next) {
     console.log("deleting");
     var post =req.params.id
     console.log(post)
-    models.post.destroy({where: { id: post, user_id: req.user.id}}).then((result) => {
+    models.favorites.destroy({where: { id: post, user_id: req.user.id}}).then((result) => {
     console.log(result)
     res.json('deleted')
     });
