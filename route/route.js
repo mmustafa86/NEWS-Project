@@ -96,7 +96,7 @@ models.favorites.findAll().then(function(data){
     
   });
 
-
+//
 
     router.get('/signin',function(req,res){
 
