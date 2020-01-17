@@ -36,17 +36,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/signin">Sign In </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/signup">SignUp</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="mynews">Favorites Feeds</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="/logout">Log Out</a>
-            </li>
+              <a class="nav-link" href="/mynews">Favorites Feeds</a>
+              <li class="nav-item">
+                  <a class="nav-link" href="/logout">Log Out</a>
+                </li>
         </ul>
       </div>
     </div>
@@ -57,7 +50,8 @@
 
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
-      <h1 class="display-3">A Warm Welcome <%=name.firstname%> <%=name.lastname%></h1>
+        <h1 class="display-3">Welcome! to MK News+</h1>
+      <h3 class="display-3">A Warm Welcome <%=name.firstname%> <%=name.lastname%></h3>
       <p class="lead"></p>
       <a href="/mynews" class="btn btn-primary btn-lg">Favorites News</a>
     </header>

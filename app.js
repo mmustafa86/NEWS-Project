@@ -19,7 +19,7 @@ app.use(morgan('dev'));
 // app.get(express.static(__dirname +'/public'));
 console.log(__dirname)
 const NewsAPI = require('newsapi');
-const newsapi = new NewsAPI('7f830f70a9b541b9bb7957578e96b91c')
+const newsapi = new NewsAPI(process.env.NewsAPI)
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());

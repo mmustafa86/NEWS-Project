@@ -16,168 +16,153 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- Custom styles for this template -->
-<link rel="stylesheet" type="text/css" href="/public/css/signin.css">
+<!-- <link rel="stylesheet" type="text/css" href="/public/css/signin.css"> -->
 </head>
 
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="/">MK News+</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/signin">Sign In </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/signup">SignUp</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="mynews">Favorites Feeds</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="/logout">Log Out</a>
-            </li>
-        </ul>
-      </div>
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand"></h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="#"></a>
+            <a class="nav-link" href="#"></a>
+            <a class="nav-link" href="#"></a>
+          </nav>
+        </div>
+      </header>
+    
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">Welcome to MK News+</h1>
+        <p class="lead">Its a free news service that you create your favorite news headlines</p>
+        <p class="lead">
+          <a href="/signin" class="btn btn-lg btn-secondary">Sign In</a>
+          <a href="/signup" class="btn btn-lg btn-secondary">Sign Out</a>
+        </p>
+      </main>
+    
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>created by MK co<a href="https://github.com/mmustafa86">/a>, by <a href=""">@mdo</a>.</p>
+        </div>
+      </footer>
     </div>
-  </nav>
 
-  <!-- Page Content -->
-  <div class="container">
 
-    <!-- Jumbotron Header -->
-    <header class="jumbotron my-4">
-      <h1 class="display-3">Welcome! to MK News+</h1>
-   
-      <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
-    </header>
 
-    <!-- Page Features -->
-    <div class="row text-center">
+  </body>
+  <style>
 
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="https://lh3.googleusercontent.com/dQRtm2IQi-73qRiQTfQtTiCU5cfnjNlBtTsi1qn0pq83pKCXR71299eMXryq89KLUtvl" style="width: 500; height: 325;" alt="">
-          <div class="card-body">
-            <h4 class="card-title">General</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-          </div>
-          <div class="card-footer">
-            <a href="/news/General" id="click" value="General" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
 
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="https://pbs.twimg.com/profile_images/603973993012428800/Z1_Vrldp_400x400.png" style="width: 500; height: 325;"alt="">
-          <div class="card-body">
-            <h4 class="card-title">Business</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-          </div>
-          <div class="card-footer">
-            <a  href="/news/Business" id="click" value="Business" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card h-100">
-            <img class="card-img-top" src="https://clickfor.net/wp-content/uploads/2018/05/Entertainment-News_9a3bf.jpg" style="width: 500; height: 425;" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Entertainment</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-            </div>
-            <div class="card-footer">
-              <a  href="/news/Entertainment" id="click" value="Entertainment" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
+/*
+ * Globals
+ */
 
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="https://www.ishn.com/ext/resources/Generic/Responsive-default/HealthNews.jpg?1577123127" style="width: 500; height: 425;" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Health</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-          </div>
-          <div class="card-footer">
-            <a href="/news/Health" id="click" value="Health" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
 
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="https://media.npr.org/images/podcasts/primary/icon_432311921-653f296b97891b32cd2cd99bc769d30619dae27f.jpeg?s=1400" style="width: 500; height: 425;"alt="">
-          <div class="card-body">
-            <h4 class="card-title">Science</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-          </div>
-          <div class="card-footer">
-            <a href="/news/Science" id="category" value="Science" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card h-100">
-            <img class="card-img-top" src="http://gufsd.org/wp-content/uploads/2018/06/Sports-News.jpg" style="width: 500; height: 425;" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Sports</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-            </div>
-            <div class="card-footer">
-              <a href="/news/Sports" value="Sports" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card h-100">
-              <img class="card-img-top" src="https://www.centrinity.com/wp-content/uploads/2017/07/technews.jpg" style="width: 500; height: 425;"alt="">
-              <div class="card-body">
-                <h4 class="card-title">Technology</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-              </div>
-              <div class="card-footer">
-                <a href="/news/Technology" id="category" value="Technology" class="btn btn-primary" >Find Out More!</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 mb-4">
-              <div class="card h-100">
-                <img class="card-img-top" src="http://lh3.googleusercontent.com/qWtUjBO9vJyO5UEKzcifPfxOp3tmFkOLIWZ0pHu0eGsKyrC1D486Yumv9o9290y_mA" style="width: 500; height: 425;alt="">
-                <div class="card-body">
-                  <h4 class="card-title">Politics</h4>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-                </div>
-                <div class="card-footer">
-                  <a href="/news/politics" class="btn btn-primary">Find Out More!</a>
-                </div>
-              </div>
-            </div>
-    </div>
-    <!-- /.row -->
+/* Custom default button */
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #fff;
+  border: .05rem solid #fff;
+}
 
-  </div>
-  <!-- /.container -->
-</body>
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
 
-  
+/*
+ * Base structure
+ */
+
+html,
+body {
+  height: 100%;
+  background-color: #333;
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  color: #fff;
+  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+}
+
+.cover-container {
+  max-width: 42em;
+}
+
+
+/*
+ * Header
+ */
+.masthead {
+  margin-bottom: 2rem;
+}
+
+.masthead-brand {
+  margin-bottom: 0;
+}
+
+.nav-masthead .nav-link {
+  padding: .25rem 0;
+  font-weight: 700;
+  color: rgba(255, 255, 255, .5);
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+  }
+}
+
+
+/*
+ * Cover
+ */
+.cover {
+  padding: 0 1.5rem;
+}
+.cover .btn-lg {
+  padding: .75rem 1.25rem;
+  font-weight: 700;
+}
+
+
+/*
+ * Footer
+ */
+.mastfoot {
+  color: rgba(255, 255, 255, .5);
+}
+
+  </style>
 
 </html>
