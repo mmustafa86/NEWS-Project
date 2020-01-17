@@ -134,7 +134,7 @@ router.get('/profile',function(req,res){
     
     
     newsapi.v2.sources({
-        category: req.params.id,
+        category: req.params.sources,
         language: 'en',
         country: 'us'
       }).then(response => {

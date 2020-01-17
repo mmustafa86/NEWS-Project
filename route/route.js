@@ -74,8 +74,6 @@ models.favorites.findAll().then(function(data){
                 console.log(error)
     
               })
-      }).catch(function(error){
-          console.log(error)
       })
       } )
      
@@ -85,6 +83,21 @@ models.favorites.findAll().then(function(data){
 
 
   })
+
+
+
+
+  router.delete("/post/:id", function (req, res, next) {
+    console.log("deleting");
+    var post =req.params.id
+    console.log(post)
+    models.post.destroy({where: { id: post, user_id: req.user.id}}).then((result) => {
+    console.log(result)
+    res.json('deleted')
+    });
+    
+  });
+
 
 
     router.get('/signin',function(req,res){
