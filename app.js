@@ -15,7 +15,7 @@ app.set('view engine','ejs');
 // app.set("views", __dirname + "/views");
 app.use(morgan('dev'));
 
-
+const CONNECTION_STRING='postgres://qktmhpxhsowgrj:a65262fc41c03dc095f5b272ff496ea7dce9c046f6dd1dd00a89fe9928431ecf@ec2-54-235-92-244.compute-1.amazonaws.com:5432/d4m13675019jjm'
 // app.get(express.static(__dirname +'/public'));
 console.log(__dirname)
 const NewsAPI = require('newsapi');
