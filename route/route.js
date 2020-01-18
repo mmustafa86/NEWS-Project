@@ -53,7 +53,9 @@ models.favorites.findAll().then(function(data){
   })
 
 
-
+router.get('/hello',function(req,res){
+    req.send('Hello!')
+})
 
   router.get('/topHeadlines/:id',function(req,res){
 
