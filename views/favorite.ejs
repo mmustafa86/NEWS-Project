@@ -45,9 +45,9 @@
 <body>
   
 
-  <div class="container">
+  <div id="card"class="container">
       <h1>Favorites</h1>
-      <div class="row ">
+      <div class="row justify-content-between ">
     <%names.forEach(function(name){%>
     <div class="card" style="width: 18rem;">
       
@@ -68,6 +68,13 @@
 
 </body>
 
+<footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
 <script>
     function deleteButton(id){
       $.ajax({
@@ -80,11 +87,24 @@
     }
     </script>
 <style>
-  .row {
-margin-top: 100px;
-padding: 100px;
+  #container{
+    margin: 100px;
   }
-</style>
+  .row {
+margin-top: 50;
 
-<%- include('footer'); -%>
+
+
+  }
+  body{
+    margin-top: 100px
+  }
+  #card{
+    margin-bottom: 310px
+    
+  }
+  
+
+   
+</style>
 </html>
