@@ -129,6 +129,7 @@ router.get('/profile',function(req,res){
 
 
   router.get('/news/:sources',function(req,res){
+    
     if(req.isAuthenticated()){
       console.log(req.user);
     
@@ -140,13 +141,14 @@ router.get('/profile',function(req,res){
       }).then(response => {
       console.log(response);
        
-        res.render('sources.ejs',{results: response})
+        res.render('sources.ejs',{results: response })
       });
     }else{
       res.redirect('/');
     }
 
 });
+
 
 router.post('/add',function(req,res){
   var userId=req.user.id
