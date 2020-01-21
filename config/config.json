@@ -1,11 +1,24 @@
 {
-  "development": {
-    "username": "postgres",
-    "password": null,
-    "database": "news-favorite",
-    "host": "localhost",
-    "dialect": "postgres"
   
+  "development": {
+    "username": "qktmhpxhsowgrj",
+    "password": "a65262fc41c03dc095f5b272ff496ea7dce9c046f6dd1dd00a89fe9928431ecf",
+    "database": "d4m13675019jjm",
+    "host": "ec2-54-235-92-244.compute-1.amazonaws.com",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": "true"
+    }
+  
+},
+"production": {
+  "username": "qktmhpxhsowgrj",
+  "password": "a65262fc41c03dc095f5b272ff496ea7dce9c046f6dd1dd00a89fe9928431ecf",
+  "database": "d4m13675019jjm",
+  "host": "ec2-54-235-92-244.compute-1.amazonaws.com",
+  "dialect": "postgres",
+  "dialectOptions": {
+    "ssl": "true"
   }
-
+}
 }
