@@ -17,7 +17,7 @@ app.use(session({
   app.use(passport.initialize());
   app.use(passport.session());
 
-
+//
 
   router.get('/',function(req,res){
       res.render('main.ejs')
@@ -43,7 +43,7 @@ models.favorites.findOne(
   })
 
 
-
+//favorites feed 
 
   router.get('/mynews',function(req,res){
     if(req.isAuthenticated())   {

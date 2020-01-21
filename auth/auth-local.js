@@ -8,7 +8,7 @@ const bodyParser = require('body-parser')
 
 require('dotenv').config();
 const NewsAPI = require('newsapi');
-const newsapi = new NewsAPI(process.env.NewsAPI)
+const newsapi = new NewsAPI("7f830f70a9b541b9bb7957578e96b91c")
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -22,7 +22,7 @@ app.use(passport.session());
 
 //encrypting function 
 var pbkdf2 = require('pbkdf2');
-var salt = process.env.SALT_KEY;
+var salt = "4213426A433E1F9C29368F36F44F1";
 
 function encryptionPassword(password) {
   var key = pbkdf2.pbkdf2Sync(
