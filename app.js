@@ -35,8 +35,10 @@ app.use(session({
 
 var route=require('./route/route')
 var authLocal=require('./auth/auth-local')
+var authGoogle =require('./auth/auth-social')
 app.use(route);
 app.use(authLocal);
+app.use(authGoogle);
 
 
 

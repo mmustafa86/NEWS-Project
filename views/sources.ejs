@@ -26,7 +26,7 @@
 
 <div>
 
-    <h1>result</h1>
+    <h1 class="d-flex">result</h1>
 </div>
       
         <div class="container">
@@ -36,7 +36,7 @@
 
 
       <%results.sources.forEach(function(data){%>
-      <div class="card col-lg-4 col-sm-6 mb-4" style="width: 18rem;">
+      <div class="card col-lg-3 col-sm-6 mb-4" style="width: 18rem;">
             <div class="card-body">
        
             <h5 class="card-title"><%=data.name%></h5>
@@ -48,6 +48,8 @@
           <form action="/add" method="POST">
             <input  type="hidden" class="btn btn-info" name="nameId" value="<%=data.id%>" />
             <input type="hidden" class="btn btn-info" name="categoryId" value="<%=data.category%>" />
+           
+             
             <button class="btn btn-info" type="submit">add</button>
 
         </form>
@@ -81,4 +83,33 @@
     // })
     // })
 </script>
+<style>
+    #container{
+    margin: 100px;
+  }
+  .container {
+  align-content: flex-start 
+}
+  .row {
+margin-top: 50;
+display: flex;
+
+
+  }
+  .card{
+    margin: 10px
+  }
+  
+  #card{
+    margin-bottom: 310px
+  }
+  
+  body{
+    background: scroll center url('https://images7.alphacoders.com/422/thumb-1920-422251.jpg');
+  background-size: cover;
+  }
+  .py-5{
+    margin-top: 360;
+  }
+</style>
 </html>

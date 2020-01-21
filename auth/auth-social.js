@@ -14,7 +14,7 @@ app.use(session({
   }));
   app.use(passport.initialize());
   app.use(passport.session());
-  var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+  var GoogleStrategy = require('passport-google-oauth20').Strategy
 
   var GOOGLE_CLIENT_ID =process.env.GOOGLE_CLIENT_ID;
   var GOOGLE_CLIENT_SECRET=process.env.GOOGLE_CLIENT_SECRET;
@@ -22,7 +22,7 @@ app.use(session({
     done(null, user.id);
   });
   passport.deserializeUser(function (id, done) {
-    models.google.findOne({ where: { id: id } }).then(function (user) {
+    models.accounts.findOne({ where: { id: id } }).then(function (user) {
       done(null, user);
     }); 
   });
@@ -30,23 +30,40 @@ app.use(session({
   passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "/auth/google/profile",
+    callbackURL: "http://localhost:4000/auth/google/callback",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
   },
-  function(req,accessToken, refreshToken, profile, done) {
-    models.google.findOrCreate({ 
+  function(accessToken, refreshToken, profile, done) {
+    models.accounts.findOne({
       where: {
-      googleId: profile.id 
-    }})
-    console.log(profile);
-      return done(null, profile);
-    // });
+        'g_id': profile.id
+      }
+    }).then((currentUser) => {
+      if (currentUser) {
+        done(null, currentUser);
+      } else {
+        models.accounts.create({
+      firstname : profile.displayName,
+          g_id: profile.id
+        }).then((newUser) => {
+          console.log("New User created: " + newUser);
+          done(null, newUser);
+        });
+      }
+    });
+  }));
+  router.get('/auth/google',
+  passport.authenticate('google', {
+    scope:
+    ['https://www.googleapis.com/auth/userinfo.profile',]
   }
   ));
 
 
 
-
+router.get('/profle',function(req,res){
+  res.send('google')
+})
   router.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/signin' }),
   function(req, res) {
@@ -56,15 +73,6 @@ app.use(session({
 
 
 
-  router.get('/auth/google',
-  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
-
-  // router.get('/profile', function(req,res){
-  
-  //   res.render("profile.ejs")
-
-// })
-module.exports = router;
 
   
 

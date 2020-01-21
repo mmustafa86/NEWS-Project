@@ -39,11 +39,8 @@ models.favorites.findAll().then(function(data){
     if(req.isAuthenticated())   {
     models.favorites.findAll().then(function(result){
         console.log(result)
-        result.forEach(element => {
-           console.log(element.name) 
-        
-          })   
-          res.render('favorite.ejs',{names: result})      
+         
+          res.render('favorite.ejs',{names: result })      
     }).catch(function(error){
         console.log(error)
     })
