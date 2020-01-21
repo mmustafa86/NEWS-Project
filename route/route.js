@@ -25,11 +25,21 @@ app.use(session({
 
 
   router.get('/favorites',function(req,res){
-models.favorites.findAll().then(function(data){
+    if(req.isAuthenticated()) {
+
+     
+models.favorites.findOne(
+    {where :{
+        user_id :req.user.id
+    } 
+    }
+).then(function(data){
     console.log(data)
 })
       res.render('favorite.ejs')
-
+    } else {
+        res.redirect('/')
+    }
   })
 
 
@@ -37,7 +47,15 @@ models.favorites.findAll().then(function(data){
 
   router.get('/mynews',function(req,res){
     if(req.isAuthenticated())   {
-    models.favorites.findAll().then(function(result){
+    models.favorites.findAll(
+        {where :{
+            user_id :req.user.id
+        } 
+        })
+    
+    
+    
+    .then(function(result){
         console.log(result)
          
           res.render('favorite.ejs',{names: result })      
