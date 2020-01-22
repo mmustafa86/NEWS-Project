@@ -30,7 +30,7 @@ app.use(session({
   passport.use(new GoogleStrategy({
     clientID: '382234308177-5gnbp943g9h6847g5ejh4bcjcklv0uue.apps.googleusercontent.com',
     clientSecret: "Ske7uzCJFY0gD5TRlic4YtjG",
-    callbackURL: "http://localhost:4000/auth/google/callback",
+    callbackURL: "https://moknews.herokuapp.com/auth/google/callback",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, done) {
