@@ -129,16 +129,18 @@ router.get('/profile', function (req, res) {
 });
 
 
-var favNames = async function(){
-   await models.favorites.findAll().then(function(data){
-  console.log(data)
-  // data.forEach(element => {
-  //   console.log(element.name) 
+var favNames =  function(){
+  var myData ; 
+  models.favorites.findAll().then(function(data){
+  // console.log(data)
+  data.forEach(element => {
+    console.log(element.name) 
     
-  //  }) 
-  return data   
+   }) 
+   myData=data   
 })
-
+console.log(myData);
+return myData
 }
 
 
@@ -154,7 +156,7 @@ router.get('/news/:sources', function (req, res) {
     }).then(response => {
       console.log(response);
 
-      res.render('sources.ejs', { results: response })
+      res.render('sources.ejs', { results: response})
     });
 
   } else {
