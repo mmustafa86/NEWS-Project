@@ -129,19 +129,19 @@ router.get('/profile', function (req, res) {
 });
 
 
-var favNames =  function(){
-  var myData ; 
-  models.favorites.findAll().then(function(data){
+var favNames =  new Promise (function(resolve,reject){
+  var myData =[]
+  resolve ( models.favorites.findAll().then(function(data){
   // console.log(data)
   data.forEach(element => {
-    console.log(element.name) 
+    myData.push(element.name)
     
-   }) 
-   myData=data   
+   })
+  
+return myData  
 })
-console.log(myData);
-return myData
-}
+  )
+})
 
 
 
@@ -155,6 +155,9 @@ router.get('/news/:sources', function (req, res) {
       country: 'us'
     }).then(response => {
       console.log(response);
+
+
+
 
       res.render('sources.ejs', { results: response})
     });
