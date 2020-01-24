@@ -129,9 +129,13 @@ router.get('/profile', function (req, res) {
 });
 
 
-var favNames =  new Promise (function(resolve,reject){
-  var myData =[]
-  resolve ( models.favorites.findAll().then(function(data){
+var favNames =  new Promise (function(resolve,reject,req){
+ var myData =[]
+  resolve ( models.favorites.findOne({
+    where :{
+      user_id: req.user.id
+    }
+  }).then(function(data){
   // console.log(data)
   data.forEach(element => {
     myData.push(element.name)
@@ -141,6 +145,7 @@ var favNames =  new Promise (function(resolve,reject){
 return myData  
 })
   )
+
 })
 
 
@@ -149,19 +154,17 @@ router.get('/news/:sources', function (req, res) {
   
     if (req.isAuthenticated()) {
     console.log(req.user);
+  
     newsapi.v2.sources({
       category: req.params.sources,
       language: 'en',
       country: 'us'
     }).then(response => {
       console.log(response);
-
-
-
-
-      res.render('sources.ejs', { results: response})
+      res.render('sources.ejs', { results: response.sources})
+      
     });
-
+   
   } else {
     res.redirect('/');
   }
@@ -176,7 +179,6 @@ router.post('/add', function (req, res) {
   var userId = req.user.id
   var dataId = req.body.nameId
   var category = req.body.categoryId
-
 
   console.log(userId)
   console.log(dataId)

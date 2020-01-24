@@ -33,34 +33,33 @@
       <!-- Card -->
       <div class="row ">
       <!-- Card -->
-      
 
-      <%results.sources.forEach(function(data){%>
+
+      <%for (var i=0 ;i < results.length; i++ ){%>
       <div class="card col-lg-3 col-sm-6 mb-4" style="width: 18rem;">
             <div class="card-body">
-              
-            <h5 class="card-title"><%=data.name%></h5>
+           
+            <h5 class="card-title" ><%=results[i].name%></h5>
            <!-- Text -->
-          <p class="card-text"><%=data.description%></p>
+           <option class="name" type="hidden" value=""></option>
+          <p class="card-text"><%=results[i].description%></p>
           <!-- Link -->
-          <a href="<%=data.url%>" class="btn btn-primary">Go somewhere</a>
+          <a href="<%=results[i].url%>" class="btn btn-primary">Go somewhere</a>
          
           <form action="/add" method="POST">
-            <input  type="hidden" class="btn btn-info" name="nameId" value="<%=data.id%>" />
-            <input type="hidden" class="btn btn-info" name="categoryId" value="<%=data.category%>" />
+            <input  type="hidden" class="btn btn-info" name="nameId" value="<%=results[i].id%>" />
+            <input type="hidden" class="btn btn-info" name="categoryId" value="<%=results[i].category%>" />
            
-             
-            <button class="btn btn-info" type="submit">add</button>
+            <button id="add" class="btn btn-info" type="submit">Add</button>
 
         </form>
         </div>
         </div>
-        <%})%>
+        <%}%>
        
     </div>
       </div>
-      <!-- Card -->
-      
+   
 
 
 
@@ -70,18 +69,109 @@
     </body>
 <%- include('footer'); -%>
 <script>
-    // $('button').click(function(e){
-    //     e.preventDefault();
-    // var value = $(this).val()   
-    // console.log(value)
-    // $.ajax({
-    //     url: '/add',
-    //     type:'POST',
-    //     data : value
-    // }).done(function (response){
-    // console.log(response);
-    // })
-    // })
+var row =<%-JSON.stringify(results)%>
+
+var names=[]
+ row.forEach(function(elem){
+   
+  names.push(elem.id)
+  // return names;
+})
+
+
+ 
+ var dataName=[]
+ $.ajax({
+        url: '/favorites',
+        method:'GET',
+        async:true,
+        dataType: 'json',
+        success: function(data)
+     { 
+       data.forEach(function(elem){
+        dataName.push(elem.name);
+       })
+       console.log(names)
+      console.log(dataName)
+//       for (var i=0 ; i< names.length ;i++){
+// // console.log(names[i])
+//   for (var j=0 ;j< dataName.length ;j++){
+
+//     // console.log(dataName[j])
+found = names.filter( val => !dataName.includes(val) )
+var intersection = names.filter(function(e) {
+  
+  return dataName.indexOf(e) > -1;
+});
+console.log(found)
+//     if(names[i]==dataName[j] ){
+    
+//       console.log('matched')
+//       $("#add").html("'Added'")
+//     }else {
+//       console.log('not matched')
+//       $("#add").html("Add")
+//     }
+//   }
+// }
+}
+        });
+        // console.log(dataName)
+
+// console.log(ajaz)
+
+      // fetch('http://localhost:4000/favorites')
+      //   .then(function(response){
+      //   console.log(response)
+      // }).catch(function(err){
+      //   console.log(err)
+      // })
+
+//       var dataName=[]
+
+//       fetch("http://localhost:4000/favorites",{
+//         method: 'GET',
+        
+//         headers: {"Content-Type": "application/json"}
+//       })
+//     .then(res=>{
+//         console.log("res1",res)
+       
+//         return res.json()
+//     })
+//     .then(data=>{
+//       console.log("res2",data)
+// data.forEach(function(elem){
+  
+//   dataName.push(data.name)
+  
+// })
+//     })
+//     .catch(res=>{
+//         console.log("Exception : ",res);
+//     })
+
+
+
+
+function compate(names,dataName){
+for (var i=0 ; i< names.length ;i++){
+console.log(names[i])
+  for (var j=0 ;j< dataName.length ;j++){
+
+    console.log(dataName[j])
+    if(names[i]==dataName[j] ){
+    
+      console.log('matched')
+      $("#add").html('Added')
+    }else {
+      console.log('not matched')
+      $("#add").html('Add')
+    }
+  }
+}
+}
+compate(names,dataName)
 </script>
 <style>
     #container{
@@ -109,7 +199,7 @@ display: flex;
   background-size: cover;
   }
   .py-5{
-    margin-top: 360;
+    margin-top: 436;
   }
 </style>
 </html>

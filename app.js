@@ -12,6 +12,7 @@ const path =require('path');
 var morgan = require('morgan');
 require('dotenv').config();
 app.set('view engine','ejs');
+const fetch = require('node-fetch')
 // app.set("views", __dirname + "/views");
 app.use(morgan('dev'));
 

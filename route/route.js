@@ -17,7 +17,7 @@ app.use(session({
   app.use(passport.initialize());
   app.use(passport.session());
 
-//
+
 
   router.get('/',function(req,res){
       res.render('main.ejs')
@@ -25,25 +25,27 @@ app.use(session({
 
 
   router.get('/favorites',function(req,res){
-    if(req.isAuthenticated()) {
-
-     
-models.favorites.findOne(
-    {where :{
-        user_id :req.user.id
-    } 
-    }
-).then(function(data){
-    console.log(data)
-})
-      res.render('favorite.ejs')
-    } else {
-        res.redirect('/')
-    }
+    if(req.isAuthenticated())   {
+      models.favorites.findAll(
+          {where :{
+              user_id :req.user.id
+          } 
+          })
+      
+      .then(function(result){
+          console.log(result)
+           
+           res.json(result)     
+      }).catch(function(error){
+          console.log(error)
+      })
+      } else {
+          res.redirect('/')
+      }
   })
 
 
-//favorites feed 
+
 
   router.get('/mynews',function(req,res){
     if(req.isAuthenticated())   {
@@ -52,8 +54,6 @@ models.favorites.findOne(
             user_id :req.user.id
         } 
         })
-    
-    
     
     .then(function(result){
         console.log(result)
