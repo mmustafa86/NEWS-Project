@@ -30,7 +30,7 @@ app.use(session({
           {where :{
               user_id :req.user.id
           } 
-          })
+        })
       
       .then(function(result){
           console.log(result)
@@ -128,7 +128,7 @@ router.get('/hello',function(req,res){
     })
   
     router.get('/error',function(req,res){
-        res.send('password incorrect ')
+        res.render('error.ejs',{ error :' incorrect password'})
       })
 
   module.exports = router;
