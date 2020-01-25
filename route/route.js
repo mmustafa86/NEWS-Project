@@ -25,7 +25,7 @@ app.use(session({
 
 
   router.get('/favorites',function(req,res){
-    if(req.isAuthenticated())   {
+    // if(req.isAuthenticated())   {
       models.favorites.findAll(
           {where :{
               user_id :req.user.id
@@ -39,9 +39,9 @@ app.use(session({
       }).catch(function(error){
           console.log(error)
       })
-      } else {
-          res.redirect('/')
-      }
+      // } else {
+      //     res.redirect('/')
+      // }
   })
 
 

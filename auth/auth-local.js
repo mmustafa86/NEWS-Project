@@ -5,7 +5,7 @@ const passport = require('passport');
 var router = express.Router();
 const models = require('../models');
 const bodyParser = require('body-parser')
-
+const rp = require("request-promise");
 require('dotenv').config();
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI("7f830f70a9b541b9bb7957578e96b91c")
@@ -129,24 +129,24 @@ router.get('/profile', function (req, res) {
 });
 
 
-var favNames =  new Promise (function(resolve,reject,req){
- var myData =[]
-  resolve ( models.favorites.findOne({
-    where :{
-      user_id: req.user.id
-    }
-  }).then(function(data){
-  // console.log(data)
-  data.forEach(element => {
-    myData.push(element.name)
+// var favNames =  new Promise (function(resolve,reject,req){
+//  var myData =[]
+//   resolve ( models.favorites.findOne({
+//     where :{
+//       user_id: req.user.id
+//     }
+//   }).then(function(data){
+//   // console.log(data)
+//   data.forEach(element => {
+//     myData.push(element.name)
     
-   })
+//    })
   
-return myData  
-})
-  )
+// return myData  
+// })
+//   )
 
-})
+// })
 
 
 
@@ -160,7 +160,7 @@ router.get('/news/:sources', function (req, res) {
       language: 'en',
       country: 'us'
     }).then(response => {
-      console.log(response);
+      // console.log(response);
       res.render('sources.ejs', { results: response.sources})
       
     });
@@ -171,24 +171,59 @@ router.get('/news/:sources', function (req, res) {
 
 });
 
+// router.get('/news/:sources', function (req, res) {
+//   if (req.isAuthenticated()) {
+
+// var api=`https://newsapi.org/v2/sources?category=${req.params.sources}&apiKey=7f830f70a9b541b9bb7957578e96b91c`
+// var local =models.favorites.findAll(
+//   {where :{
+//       user_id :req.user.id
+//   } 
+//   })
+
+
+// Promise.all([api, local])
+// .then(([posts, authors]) => {
+//   console.log(posts)
+//   console.log(authors)
+
+// }).catch((e) => console.error(e));
+//   } else {
+//     res.redirect('/');
+//   }
+// })
 
 
 
 
-router.post('/add', function (req, res) {
+router.post('/add', function (req, res ,done) {
   var userId = req.user.id
   var dataId = req.body.nameId
   var category = req.body.categoryId
-
-  console.log(userId)
-  console.log(dataId)
-  models.favorites.create({
+models.favorites.findOne({
+  where : {
     user_id: userId,
-    name: dataId,
-    category: category
-  }).then(function (user) {
-    console.log(user)
-  })
+    name: req.body.nameId
+  }
+}).then(function(results){
+  console.log(results)
+  
+  if(results) {
+    console.log('done')
+    // done(null ,results)
+    // res.redirect('/news/:sources')
+  }else {  
+    console.log(userId)
+    console.log(dataId)
+    models.favorites.create({
+      user_id: userId,
+      name: dataId,
+      category: category
+    }).then(function (user) {
+      console.log(user)
+    })
+  }
+})
   // res.redirect('favorite')
 
 })

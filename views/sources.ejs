@@ -41,7 +41,9 @@
            
             <h5 class="card-title" ><%=results[i].name%></h5>
            <!-- Text -->
-           <option class="name" type="hidden" value=""></option>
+           <h2></h2>
+           
+        
           <p class="card-text"><%=results[i].description%></p>
           <!-- Link -->
           <a href="<%=results[i].url%>" class="btn btn-primary">Go somewhere</a>
@@ -51,12 +53,12 @@
             <input type="hidden" class="btn btn-info" name="categoryId" value="<%=results[i].category%>" />
            
             <button id="add" class="btn btn-info" type="submit">Add</button>
-
+          
         </form>
         </div>
         </div>
         <%}%>
-       
+     
     </div>
       </div>
    
@@ -93,85 +95,24 @@ var names=[]
        })
        console.log(names)
       console.log(dataName)
-//       for (var i=0 ; i< names.length ;i++){
-// // console.log(names[i])
-//   for (var j=0 ;j< dataName.length ;j++){
+      for (var i=0 ; i< names.length ;i++){
 
-//     // console.log(dataName[j])
-found = names.filter( val => !dataName.includes(val) )
-var intersection = names.filter(function(e) {
-  
-  return dataName.indexOf(e) > -1;
-});
-console.log(found)
-//     if(names[i]==dataName[j] ){
-    
-//       console.log('matched')
-//       $("#add").html("'Added'")
-//     }else {
-//       console.log('not matched')
-//       $("#add").html("Add")
-//     }
-//   }
-// }
-}
-        });
-        // console.log(dataName)
-
-// console.log(ajaz)
-
-      // fetch('http://localhost:4000/favorites')
-      //   .then(function(response){
-      //   console.log(response)
-      // }).catch(function(err){
-      //   console.log(err)
-      // })
-
-//       var dataName=[]
-
-//       fetch("http://localhost:4000/favorites",{
-//         method: 'GET',
-        
-//         headers: {"Content-Type": "application/json"}
-//       })
-//     .then(res=>{
-//         console.log("res1",res)
-       
-//         return res.json()
-//     })
-//     .then(data=>{
-//       console.log("res2",data)
-// data.forEach(function(elem){
-  
-//   dataName.push(data.name)
-  
-// })
-//     })
-//     .catch(res=>{
-//         console.log("Exception : ",res);
-//     })
-
-
-
-
-function compate(names,dataName){
-for (var i=0 ; i< names.length ;i++){
-console.log(names[i])
   for (var j=0 ;j< dataName.length ;j++){
 
-    console.log(dataName[j])
-    if(names[i]==dataName[j] ){
-    
-      console.log('matched')
-      $("#add").html('Added')
-    }else {
-      console.log('not matched')
-      $("#add").html('Add')
-    }
+
   }
 }
+found = names.filter( val => !dataName.includes(val) )
+
+console.log(found)
+
+   
+
 }
-compate(names,dataName)
+        });
+   
+        console.log(found)
+
 </script>
 <style>
     #container{
