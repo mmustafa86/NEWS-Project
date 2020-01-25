@@ -149,7 +149,7 @@ router.get('/profile', function (req, res) {
 // })
 
 
-
+// news sources by country
 router.get('/news/:sources', function (req, res) {
   
     if (req.isAuthenticated()) {
@@ -195,7 +195,7 @@ router.get('/news/:sources', function (req, res) {
 
 
 
-
+// add your  favorites news 
 router.post('/add', function (req, res ,done) {
   var userId = req.user.id
   var dataId = req.body.nameId
@@ -210,8 +210,7 @@ models.favorites.findOne({
   
   if(results) {
     console.log('done')
-    // done(null ,results)
-    // res.redirect('/news/:sources')
+   
   }else {  
     console.log(userId)
     console.log(dataId)
