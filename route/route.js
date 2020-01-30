@@ -6,7 +6,7 @@ var router = express.Router();
 const models= require('../models');
 
 const NewsAPI = require('newsapi');
-const newsapi = new NewsAPI(process.env.NewsAPI)
+const newsapi = new NewsAPI('7f830f70a9b541b9bb7957578e96b91c')
 
 app.use(session({
     secret: "user_id", 
@@ -39,9 +39,7 @@ app.use(session({
       }).catch(function(error){
           console.log(error)
       })
-      // } else {
-      //     res.redirect('/')
-      // }
+     
   })
 
 
