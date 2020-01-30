@@ -4,7 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     category: DataTypes.STRING,
     language: DataTypes.STRING,
-    country: DataTypes.STRING
+    country: DataTypes.STRING,
+    user_id: DataTypes.INTEGER
   }, {});
   favorites.associate = function(models) {
     favorites.belongsTo(models.accounts, {

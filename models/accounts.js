@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   accounts.associate = function(models) {
     // associations can be defined here
+    accounts.hasMany(models.favorites, {
+      as: 'favorites',
+      foreignKey: 'user_id'
+    });
   };
   return accounts;
 };

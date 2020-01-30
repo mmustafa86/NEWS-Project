@@ -15,7 +15,7 @@ app.set('view engine','ejs');
 const fetch = require('node-fetch')
 // app.set("views", __dirname + "/views");
 app.use(morgan('dev'));
-
+const ejsLint = require('ejs-lint');
 const CONNECTION_STRING='postgres://qktmhpxhsowgrj:a65262fc41c03dc095f5b272ff496ea7dce9c046f6dd1dd00a89fe9928431ecf@ec2-54-235-92-244.compute-1.amazonaws.com:5432/d4m13675019jjm'
 
 console.log(__dirname)
@@ -30,7 +30,7 @@ app.use(session({
     resave: false, 
     saveUninitialized: true
   }));
-
+  app.use(express.static('styles/css'));
   app.use(passport.initialize());
   app.use(passport.session());
 
@@ -40,6 +40,50 @@ var authGoogle =require('./auth/auth-social')
 app.use(route);
 app.use(authLocal);
 app.use(authGoogle);
+
+
+// const mongoose =require('mongoose')
+
+
+// const usersSchema = new mongoose.Schema({
+//   fisrstName: String , 
+//   LastName: String ,
+//   email: String ,
+//   password: String, 
+//   g_id: String
+// })
+
+// const userMongo =mongoose.model('user',usersSchema);
+
+
+// mongoose.connect('mongodb://localhost:27017/db',{useNewUrParser: true },function (error){
+//   if ( error){
+//     console.log('not connected')
+//   }else{
+// console.log('connected')
+//   }
+//   })
+
+  
+//   userMongo.find({} ,function(error,users){
+//   console.log(users)
+// })
+
+  
+// const usersmon = new userMongo ({
+//   fisrstName: 'Sara' , 
+//     LastName: 'Omar' ,
+//     email: 'sara@yahoo.com' ,
+//     password: '123456', 
+//     g_id: '12344'
+// })
+// usersmon.save((error,newuserMongo )=>{
+//   if (error){
+//     console.log(error)
+//   }else{
+//     console.log(newuserMongo)
+//   }
+// })
 
 
 

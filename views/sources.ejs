@@ -10,55 +10,67 @@
   <title>Heroic Features - Start Bootstrap Template</title>
 
   <!-- Bootstrap core CSS -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- Custom styles for this template -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
-  crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous">
   <link href="" rel="stylesheet">
-  
+
 </head>
 <%- include('header'); -%>
+
 <body>
 
-<div>
+  <div>
 
     <h1 class="d-flex">result</h1>
-</div>
-      
-        <div class="container">
-      <!-- Card -->
-      <div class="row ">
+  </div>
+
+  <div class="container">
+    <!-- Card -->
+    <div class="row ">
       <!-- Card -->
 
-
+      <%var b=[]%>
       <%for (var i=0 ;i < results.length; i++ ){%>
       <div class="card col-lg-3 col-sm-6 mb-4" style="width: 18rem;">
-            <div class="card-body">
-           
-            <h5 class="card-title" ><%=results[i].name%></h5>
-           <!-- Text -->
-           <h2></h2>
-           
-        
+        <div class="card-body">
+
+          <h5 id='apiName' class="card-title"><%= results[i].name%></h5>
+          <!-- Text -->
+          <%b.push(results[i].id)%>
+
+
           <p class="card-text"><%=results[i].description%></p>
           <!-- Link -->
           <a href="<%=results[i].url%>" class="btn btn-primary">Go somewhere</a>
-         
+
           <form action="/add" method="POST">
-            <input  type="hidden" class="btn btn-info" name="nameId" value="<%=results[i].id%>" />
+            <input type="hidden" class="btn btn-info" name="nameId" value="<%=results[i].id%>" />
             <input type="hidden" class="btn btn-info" name="categoryId" value="<%=results[i].category%>" />
+
+
+            <input id='dataName' type="hidden" value="<%=favorites%>">
            
+<% if(favorites.sort().join(',')=== b.sort().join(',')){%>
+  alert('same members');
+
+  <%console.log('match')%>
+<%}%>
+
             <button id="add" class="btn btn-info" type="submit">Add</button>
-          
-        </form>
+
+
+          </form>
         </div>
-        </div>
-        <%}%>
-     
+      </div>
+      <%}%>
+        
+      
     </div>
       </div>
    
@@ -70,77 +82,39 @@
 
     </body>
 <%- include('footer'); -%>
-<script>
-var row =<%-JSON.stringify(results)%>
 
-var names=[]
- row.forEach(function(elem){
-   
-  names.push(elem.id)
-  // return names;
-})
+      <style>
+        #container {
+          margin: 100px;
+        }
 
+        .container {
+          align-content: flex-start
+        }
 
- 
- var dataName=[]
- $.ajax({
-        url: '/favorites',
-        method:'GET',
-        async:true,
-        dataType: 'json',
-        success: function(data)
-     { 
-       data.forEach(function(elem){
-        dataName.push(elem.name);
-       })
-       console.log(names)
-      console.log(dataName)
-      for (var i=0 ; i< names.length ;i++){
-
-  for (var j=0 ;j< dataName.length ;j++){
+        .row {
+          margin-top: 50;
+          display: flex;
 
 
-  }
-}
-found = names.filter( val => !dataName.includes(val) )
+        }
 
-console.log(found)
+        .card {
+          margin: 10px
+        }
 
-   
+        #card {
+          margin-bottom: 310px
+        }
 
-}
-        });
-   
-        console.log(found)
+        body {
+          background: scroll center url('https://images7.alphacoders.com/422/thumb-1920-422251.jpg');
+          background-size: cover;
+        }
 
-</script>
-<style>
-    #container{
-    margin: 100px;
-  }
-  .container {
-  align-content: flex-start 
-}
-  .row {
-margin-top: 50;
-display: flex;
+        .py-5 {
+          margin-top: 436;
+        }
+      </style>
 
-
-  }
-  .card{
-    margin: 10px
-  }
-  
-  #card{
-    margin-bottom: 310px
-  }
-  
-  body{
-    background: scroll center url('https://images7.alphacoders.com/422/thumb-1920-422251.jpg');
-  background-size: cover;
-  }
-  .py-5{
-    margin-top: 436;
-  }
-</style>
 </html>

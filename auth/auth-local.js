@@ -117,6 +117,7 @@ router.get('/success', function (req, res) {
   }
 });
 
+
 router.get('/profile', function (req, res) {
   if (req.isAuthenticated()) {
     console.log(req.user);
@@ -129,70 +130,34 @@ router.get('/profile', function (req, res) {
 });
 
 
-// var favNames =  new Promise (function(resolve,reject,req){
-//  var myData =[]
-//   resolve ( models.favorites.findOne({
-//     where :{
-//       user_id: req.user.id
-//     }
-//   }).then(function(data){
-//   // console.log(data)
-//   data.forEach(element => {
-//     myData.push(element.name)
-    
-//    })
-  
-// return myData  
-// })
-//   )
-
-// })
-
-
-// news sources by country
+// news sources by category
 router.get('/news/:sources', function (req, res) {
   
     if (req.isAuthenticated()) {
-    console.log(req.user);
-  
+    console.log(req.user.toJSON());
+   
+  models.favorites.findAll({where: {user_id: req.user.id}}).then(result => {
+// console.log(result)
+var a=[]
+for (var i=0; i< result.length;i++){
+  a.push(result[i].name)
+}
     newsapi.v2.sources({
       category: req.params.sources,
       language: 'en',
       country: 'us'
     }).then(response => {
-      // console.log(response);
-      res.render('sources.ejs', { results: response.sources})
+      // console.log(a);
+      res.render('sources.ejs', { results: response.sources, favorites: a })
       
     });
+  });
    
   } else {
     res.redirect('/');
   }
 
 });
-
-// router.get('/news/:sources', function (req, res) {
-//   if (req.isAuthenticated()) {
-
-// var api=`https://newsapi.org/v2/sources?category=${req.params.sources}&apiKey=7f830f70a9b541b9bb7957578e96b91c`
-// var local =models.favorites.findAll(
-//   {where :{
-//       user_id :req.user.id
-//   } 
-//   })
-
-
-// Promise.all([api, local])
-// .then(([posts, authors]) => {
-//   console.log(posts)
-//   console.log(authors)
-
-// }).catch((e) => console.error(e));
-//   } else {
-//     res.redirect('/');
-//   }
-// })
-
 
 
 // add your  favorites news 
@@ -210,7 +175,7 @@ models.favorites.findOne({
   
   if(results) {
     console.log('done')
-   
+  
   }else {  
     console.log(userId)
     console.log(dataId)
@@ -223,11 +188,9 @@ models.favorites.findOne({
     })
   }
 })
-  // res.redirect('favorite')
+  
 
 })
-
-
 
 
 
