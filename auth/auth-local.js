@@ -4,8 +4,7 @@ const session = require('express-session');
 const passport = require('passport');
 var router = express.Router();
 const models = require('../models');
-const bodyParser = require('body-parser')
-const rp = require("request-promise");
+const bodyParser = require('body-parser');
 require('dotenv').config();
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('7f830f70a9b541b9bb7957578e96b91c')
